@@ -4,7 +4,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import com.algaworks.food.domain.repository.CustomJpaRepository;
 import com.algaworks.food.infrastructure.repository.CustomJpaRepositoryImpl;
 
 @SpringBootApplication

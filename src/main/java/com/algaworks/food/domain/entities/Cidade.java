@@ -14,13 +14,14 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)//pedido para incluir apenas o que for explicito no código
 public class Cidade {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@EqualsAndHashCode.Include
+	@Id
 	private Long id;
 	
 	@JoinColumn(nullable = false)
 	private String nome;
+	
 	@ManyToOne
 	@JoinColumn(nullable = false)//joinColumn indica que a entidade é a responsavel pelo relacionamento
 	private Estado estado;

@@ -25,7 +25,7 @@ public class TesteController {
 	
 	@GetMapping("/cozinhas/por-nome")
 	public List<Cozinha> findByNome(String nome){
-	return cozinhaRepository.findTodasByNomeContaining(nome);
+		return cozinhaRepository.findTodasByNomeContaining(nome);
 	
 	}
 	@GetMapping("/restaurantes/por-taxa-frete")

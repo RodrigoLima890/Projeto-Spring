@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.algaworks.food.domain.entities.Restaurante;
@@ -13,6 +14,9 @@ public interface RestauranteRepository extends CustomJpaRepository<Restaurante, 
 RestauranteQuery,
 JpaSpecificationExecutor<Restaurante>{
 
+	@Query("from Restaurante r join r.cozinha left join fetch r.formasPagamento")
+	List<Restaurante> findAll();
+	
 	List<Restaurante> findBytaxaFreteBetween(BigDecimal taxaInicial, BigDecimal taxaFinal);
 	//@Query("from Restaurante where nome like %:nome% and cozinha.id = :id")
 	List<Restaurante> cosultarPorNome(String nome, @Param("id")Long cozinhaId);
