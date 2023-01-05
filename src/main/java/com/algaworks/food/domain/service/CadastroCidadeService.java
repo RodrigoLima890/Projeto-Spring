@@ -1,45 +1,45 @@
 package com.algaworks.food.domain.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessResourceFailureException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.algaworks.food.domain.entities.Cidade;
 import com.algaworks.food.domain.entities.Estado;
+import com.algaworks.food.domain.exception.CidadeNaoEncontradaException;
 import com.algaworks.food.domain.exception.EntidadeEmUsoException;
-import com.algaworks.food.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.food.domain.repository.CidadeRepository;
-import com.algaworks.food.domain.repository.EstadoRepository;
 
 @Service
 public class CadastroCidadeService {
+	
+	private static final String MSG_CIDADE_EM_USO = 
+			"A cidade de código %d não pode ser apagada pois esta em uso!";
+	
 	@Autowired
 	private CidadeRepository cidadeRepository;
+	
 	@Autowired
-	private EstadoRepository estadoRepository;
+	private CadastroEstadoService cadastroEstado;
 	
 	public Cidade salvar(Cidade cidade) {
 		Long estadoId = cidade.getEstado().getId();
-		Optional<Estado> estado = estadoRepository.findById(estadoId);
-		if (estado == null) {
-            throw new EntidadeNaoEncontradaException(
-                String.format("Não existe cadastro de estado com código %d", estadoId));
-        }
-		cidade.setEstado(estado.get());
+		Estado estado = cadastroEstado.buscar(estadoId);
+		cidade.setEstado(estado);
 		return cidadeRepository.save(cidade);
 	}
 	public void excluir(Long cidadeId) {
 		try {
 			cidadeRepository.deleteById(cidadeId);
 		}catch(EmptyResultDataAccessException e) {
-			throw new EntidadeNaoEncontradaException(String.format("A Cidade de código %d não foi encontrada! ", cidadeId));
-		}catch(DataAccessResourceFailureException e) {
-			throw new EntidadeEmUsoException(String.format("A cidade de código %d não pode ser apagada pois esta em uso!", cidadeId));
+			throw new CidadeNaoEncontradaException(cidadeId);
+		}catch(DataIntegrityViolationException e) {
+			throw new EntidadeEmUsoException(String.format(MSG_CIDADE_EM_USO, cidadeId));
 		}
 	}
-	
-
+	public Cidade buscar(Long cidadeId) {
+		return cidadeRepository.findById(cidadeId).orElseThrow(() ->
+		new CidadeNaoEncontradaException(cidadeId));
+	}
 }

@@ -47,6 +47,7 @@ public class Restaurante {
 	@UpdateTimestamp//pega a data de update do sql
 	@Column(nullable = false, columnDefinition = "DateTime", name = "data_cadastro")
 	private LocalDateTime dataCadastro;
+	
 	@JsonIgnore
 	@UpdateTimestamp
 	@Column(nullable  = false, columnDefinition = "DateTime", name = "data_atualizacao")

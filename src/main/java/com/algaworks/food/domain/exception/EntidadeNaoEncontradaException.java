@@ -1,6 +1,10 @@
 package com.algaworks.food.domain.exception;
 
-public class EntidadeNaoEncontradaException extends RuntimeException{
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(code = HttpStatus.NOT_FOUND)
+public abstract class EntidadeNaoEncontradaException extends NegocioException{
 
 	private static final long serialVersionUID = 1L;
 	
