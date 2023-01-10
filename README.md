@@ -5,10 +5,9 @@
 # Tecnológias
 #
 ## Java
-## Spring boot
 ## JPA
 ## Hibernate
-## MVC
+## Spring-Boot MVC
 ## mySql
 ## flyway
 ## em andamento ...
