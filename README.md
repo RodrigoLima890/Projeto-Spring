@@ -1,3 +1,16 @@
 # Spring_Project
 
-# Projeto-Spring
+## Projeto-Spring
+
+## curso especialista Spring Rest
+
+# Tecnológias
+
+## Java
+## Spring boot
+## JPA
+## MVC
+## mySql
+
+
+## em andamento ...
