@@ -20,4 +20,5 @@ public class Estado {
 	private Long id;
 	@JoinColumn(nullable = false)
 	private String nome;
+
 }
