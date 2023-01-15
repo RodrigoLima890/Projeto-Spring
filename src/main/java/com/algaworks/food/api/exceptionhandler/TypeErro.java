@@ -6,7 +6,8 @@ import lombok.Getter;
 public enum TypeErro {
 	ENTIDADE_NAO_ENCONTRADA("Entidade Não Encontrada", "/entidade-nao-encontrada"),
 	ENTIDADE_EM_USO("Entidade Em Uso", "/entidade-em-uso"),
-	ERROR_DE_NEGOCIO("Violação Das Regras De Negócio","/error-negocio");
+	ERROR_DE_NEGOCIO("Violação Das Regras De Negócio","/error-negocio"),
+	MENSAGEM_COM_ERROR("Erro Na Mensagem","/mensagem-com-error");
 	
 	private String title;
 	private String uri;
