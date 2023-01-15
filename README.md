@@ -10,6 +10,7 @@
 ## Spring-Boot MVC
 ## mySql
 ## flyway
+## Lombok
 ## em andamento ...
 #
 # Sobre As Exceptions Da Api
