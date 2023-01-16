@@ -9,9 +9,11 @@
 ## Java
 ## JPA
 ## Hibernate
-## Spring-Boot MVC
-## mySql
-## flyway
+## Spring-Boot
+## Spring MVC
+## Spring Data JPA
+## MySql
+## Flyway
 ## Lombok
 ## em andamento ...
 #
