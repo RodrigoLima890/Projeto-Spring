@@ -29,6 +29,6 @@ public class CadastroRestauranteService {
 	public Restaurante buscar(Long restauranteId) {
 		return restauranteRepository.findById(restauranteId).orElseThrow(()->
 		new RestauranteNaoEncontradoException(restauranteId));
-		}
+	}
 }
 
